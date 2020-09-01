@@ -18,11 +18,11 @@
         </td>
         <td>
             @Html.TextBox("candidates[" + @i + "].Republicans",
-                      Model[i].Republicans)
+                      Model[i].Republicans, new { @i = "rowID", @onchange = "display(this.id);" })
     </td>
     <td>
         @Html.TextBox("candidates[" + @i + "].Democrats",
-                  Model[i].Democrats)
+                  Model[i].Democrats, new { @i = "rowID", @onchange = "display(this.id);" })
 </td>
 </tr>
 }
@@ -33,3 +33,4 @@
         </tr>
     </table>
 }
+<script type="text/javascript" src="~/Scripts/editcolor.js"></script>
