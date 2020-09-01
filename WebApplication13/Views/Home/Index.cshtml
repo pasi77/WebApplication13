@@ -3,34 +3,37 @@
 <h1>List of STATES</h1>
 @using (Html.BeginForm("Index", "Home", FormMethod.Post))
 {
-    <table border="1" cellpadding="6">
+    <td colspan="4">
+        <input type="submit" value="Submit"/>
+    </td>
+    <table border="1" cellpadding="7">
+
         @for (int i = 0; i < Model.Count; i++)
         {
             <tr>
                 <td>
-                    @*@Html.Hidden("candidates.Index", (@i + 10))*@
-                    @Html.TextBox("candidates[" + @i + "].ID",
-                              Model[i].ID, new { @readonly = "readonly" })
+                    @Html.Hidden("candidates[" + @i + "].ID",
+                                 Model[i].ID, new { @readonly = "readonly" })
                 </td>
-            <td>
-                @Html.TextBox("candidates[" + @i + "].State",
-                          Model[i].State)
-        </td>
-        <td>
-            @Html.TextBox("candidates[" + @i + "].Republicans",
-                      Model[i].Republicans, new { @i = "rowID", @onchange = "display(this.id);" })
-    </td>
-    <td>
-        @Html.TextBox("candidates[" + @i + "].Democrats",
-                  Model[i].Democrats, new { @i = "rowID", @onchange = "display(this.id);" })
-</td>
-</tr>
-}
+                <td>
+                    @Html.TextBox("candidates[" + @i + "].State",
+                              Model[i].State, new { @readonly = "readonly" })
+                </td>
+                <td>
+                    @Html.TextBox("candidates[" + @i + "].Republicans",
+                              Model[i].Republicans, new { @i = "rowID", @onchange = "display(this.id);" })
+                </td>
+                <td>
+                    @Html.TextBox("candidates[" + @i + "].Democrats",
+                              Model[i].Democrats, new { @i = "rowID", @onchange = "display(this.id);" })
+                </td>
+            </tr>
+        }
         <tr>
-            <td colspan="4">
-                <input type="submit" value="Submit" />
-            </td>
         </tr>
     </table>
+    <td colspan="4">
+        <input type="submit" value="Submit" />
+    </td>
 }
 <script type="text/javascript" src="~/Scripts/editcolor.js"></script>

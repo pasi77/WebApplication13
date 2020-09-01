@@ -21,7 +21,7 @@ namespace CRUDemo.Models
                 conn.Open();
                 NpgsqlCommand cmd = new NpgsqlCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = "SELECT * from public.us_election_states";
+                cmd.CommandText = "SELECT * from public.us_election_states order by name";
                 cmd.CommandType = CommandType.Text;
 
                 Npgsql.NpgsqlDataReader dr = cmd.ExecuteReader();
