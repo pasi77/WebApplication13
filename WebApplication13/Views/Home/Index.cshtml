@@ -4,39 +4,47 @@
 @using (Html.BeginForm("Index", "Home", FormMethod.Post))
 {
     <td colspan="4">
-        <input type="submit" value="Submit"/>
+        <button type="submit" class="btn btn-secondary">Submit</button>
+        @*<input type="submit" value="Submit"/>*@
     </td>
     @*<table border="1" cellpadding="7">*@
 <table class="table table-striped">
     <div class="form-group">
-        @for (int i = 0; i < Model.Count; i++)
-        {
-            <tr>
-                <td>
+        
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>
 
-                    @Html.Hidden("candidates[" + @i + "].ID",
-                                 Model[i].ID, new { @readonly = "readonly" })
-                </td>
-                <td>
-                    @Html.Label("candidates[" + @i + "].State",
-                              Model[i].State, new { @readonly = "readonly" })
-                </td>
-                <td>
-                    @Html.TextBox("candidates[" + @i + "].Republicans",
-                              Model[i].Republicans, new { @onchange = "display(this.id);", size = "2" })
-                </td>
-                <td>
-                    @Html.TextBox("candidates[" + @i + "].Democrats",
-                              Model[i].Democrats, new { @onchange = "display(this.id);", size = "2" })
-                </td>
+                        @Html.Hidden("candidates[" + @i + "].ID",
+                                     Model[i].ID, new { @readonly = "readonly" })
+                    </td>
+                    <td>
+                        @Html.Hidden("candidates[" + @i + "].State",
+                                  Model[i].State)
+                        @Html.Label("candidates[" + @i + "].State",
+                                Model[i].State, new { @class = "text-uppercase font-weight-bold" })
+                    </td>
+                    <td>
+                        @Html.TextBox("candidates[" + @i + "].Republicans",
+                                  Model[i].Republicans, new { @onchange = "display(this.id);"})
+                    </td>
+
+                    <td>
+                        @Html.TextBox("candidates[" + @i + "].Democrats",
+                                  Model[i].Democrats, new { @onchange = "display(this.id);" })
+                    </td>
+
+                </tr>
+            }
+            <tr>
             </tr>
-        }
-        <tr>
-        </tr>
-        </div>
+        
+    </div>
 </table>
-        <td colspan="4">
-            <input type="submit" value="Submit" />
-        </td>
+<td colspan="4">
+    <button type="submit" class="btn btn-secondary">Submit</button>
+    @*<input type="submit" value="Submit" />*@
+</td>
         }
         <script type="text/javascript" src="~/Scripts/editcolor.js"></script>
